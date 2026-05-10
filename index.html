@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARVIMA DETAILING | Perfección Automotriz Premium</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lexend:wght@300;600;800&display=swap');
+        
+        :root {
+            --gold: #D4AF37;
+            --dark: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .font-display { font-family: 'Lexend', sans-serif; }
+
+        /* Estilo Custom para el Slider Antes/Después */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        .before-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 10;
+            border-right: 2px solid var(--gold);
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+            z-index: 20;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Animación de Cursor Premium */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        .gold-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="custom-cursor" class="hidden md:block"></div>
+
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6 px-10 glass" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-display font-extrabold tracking-tighter">
+                CARVIMA <span class="text-[#D4AF37]">DETAILING</span>
+            </div>
+            <div class="hidden md:flex space-x-10 text-[11px] uppercase tracking-[0.25em] font-bold">
+                <a href="#inicio" class="hover:text-[#D4AF37] transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-[#D4AF37] transition-colors">Servicios</a>
+                <a href="#proceso" class="hover:text-[#D4AF37] transition-colors">Proceso</a>
+                <a href="#contacto" class="hover:text-[#D4AF37] transition-colors">Contacto</a>
+            </div>
+            <a href="https://wa.me/tu_numero" class="bg-[#D4AF37] text-black px-6 py-2 font-bold text-[10px] uppercase tracking-widest hover:bg-white transition-all">
+                WhatsApp Directo
+            </a>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070" class="w-full h-full object-cover opacity-40 scale-105" id="hero-img">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
+        </div>
+
+        <div class="relative z-20 text-center px-6">
+            <h1 class="text-6xl md:text-[120px] font-display font-extrabold leading-none tracking-tighter mb-4 opacity-0" id="hero-title">
+                PURE <span class="text-[#D4AF37]">LUXURY</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-2xl font-light tracking-[0.2em] uppercase mb-10 opacity-0" id="hero-subtitle">
+                Detailing de alta gama para coleccionistas
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center opacity-0" id="hero-btns">
+                <a href="#contacto" class="px-12 py-5 bg-[#D4AF37] text-black font-bold uppercase tracking-widest hover:scale-105 transition-transform">Agendar Inspección</a>
+                <a href="#servicios" class="px-12 py-5 border border-white/20 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all">Nuestros Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-black">
+        <div class="max-w-5xl mx-auto text-center mb-16">
+            <h2 class="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">Visualiza el cambio</h2>
+            <h3 class="text-4xl font-display font-bold italic underline decoration-[#D4AF37]">PERFECCIÓN SIN LÍMITES</h3>
+        </div>
+        
+        <div class="max-w-6xl mx-auto comparison-slider rounded-2xl shadow-2xl group border border-white/10">
+            <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
+            <div id="before-box" class="before-image">
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-[1152px] h-[500px] object-cover grayscale brightness-50">
+                <span class="absolute top-1/2 left-10 text-white font-bold tracking-widest uppercase bg-black/50 px-4 py-2">Antes</span>
+            </div>
+            <div id="handle" class="slider-handle"></div>
+            <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 z-30 cursor-col-resize" oninput="moveSlider(this.value)">
+            <span class="absolute top-1/2 right-10 text-white font-bold tracking-widest uppercase bg-black/50 px-4 py-2">Después</span>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-1">
+            <div class="glass p-12 hover:bg-[#D4AF37] hover:text-black transition-all duration-700 group" data-aos="fade-up">
+                <span class="text-4xl mb-8 block">01</span>
+                <h4 class="text-3xl font-display font-bold mb-4 uppercase">Ceramic Coating</h4>
+                <p class="opacity-70 group-hover:opacity-100 mb-8">Blindaje nanotecnológico con brillo extremo y repelencia total al agua.</p>
+                <ul class="text-xs space-y-2 opacity-50 group-hover:opacity-100">
+                    <li>Dureza 9H Certificada</li>
+                    <li>Garantía de 5 años</li>
+                </ul>
+            </div>
+            <div class="glass p-12 hover:bg-[#D4AF37] hover:text-black transition-all duration-700 group" data-aos="fade-up" data-aos-delay="200">
+                <span class="text-4xl mb-8 block">02</span>
+                <h4 class="text-3xl font-display font-bold mb-4 uppercase">Paint Correction</h4>
+                <p class="opacity-70 group-hover:opacity-100 mb-8">Eliminación de defectos de pintura mediante pulido técnico multietapa.</p>
+                <ul class="text-xs space-y-2 opacity-50 group-hover:opacity-100">
+                    <li>Eliminación de Swirls</li>
+                    <li>Acabado Showroom</li>
+                </ul>
+            </div>
+            <div class="glass p-12 hover:bg-[#D4AF37] hover:text-black transition-all duration-700 group" data-aos="fade-up" data-aos-delay="400">
+                <span class="text-4xl mb-8 block">03</span>
+                <h4 class="text-3xl font-display font-bold mb-4 uppercase">Interior Spa</h4>
+                <p class="opacity-70 group-hover:opacity-100 mb-8">Restauración profunda de cueros, alcántara y desinfección total.</p>
+                <ul class="text-xs space-y-2 opacity-50 group-hover:opacity-100">
+                    <li>Hidratación de Cuero</li>
+                    <li>Limpieza de Vapor</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-32 px-6 bg-[#050505]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl md:text-7xl font-display font-bold mb-12">¿LISTO PARA EL <br> <span class="text-[#D4AF37]">SIGUIENTE NIVEL?</span></h2>
+            
+            <form class="text-left space-y-8 glass p-10 rounded-3xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <input type="text" placeholder="NOMBRE COMPLETO" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-[#D4AF37] transition-all w-full tracking-widest text-xs">
+                    <input type="text" placeholder="MODELO DEL VEHÍCULO" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-[#D4AF37] transition-all w-full tracking-widest text-xs">
+                </div>
+                <input type="email" placeholder="EMAIL DE CONTACTO" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-[#D4AF37] transition-all w-full tracking-widest text-xs">
+                <button class="w-full py-6 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-[#D4AF37] transition-all duration-500">
+                    Enviar Solicitud Exclusiva
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/10 px-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:row justify-between items-center gap-10">
+            <div class="text-3xl font-display font-black tracking-tighter">CARVIMA</div>
+            <div class="flex space-x-8">
+                <a href="#" class="text-white/50 hover:text-[#D4AF37] transition-colors"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="text-white/50 hover:text-[#D4AF37] transition-colors"><i class="fab fa-facebook fa-2x"></i></a>
+            </div>
+            <p class="text-[10px] text-white/30 tracking-[0.5em] uppercase text-center md:text-right">Est. 2026 &copy; Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Animación de entrada con GSAP
+        window.onload = () => {
+            const tl = gsap.timeline();
+            tl.to("#hero-title", { opacity: 1, y: -20, duration: 1, delay: 0.5 })
+              .to("#hero-subtitle", { opacity: 1, y: -20, duration: 0.8 }, "-=0.5")
+              .to("#hero-btns", { opacity: 1, y: -20, duration: 0.8 }, "-=0.5")
+              .to("#hero-img", { scale: 1, duration: 3, ease: "power2.out" }, "0");
+        };
+
+        // Slider Antes/Después
+        function moveSlider(value) {
+            document.getElementById('before-box').style.width = value + '%';
+            document.getElementById('handle').style.left = value + '%';
+        }
+
+        // Cursor Personalizado
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Navbar Efecto Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if(window.scrollY > 100) {
+                nav.classList.add('py-4', 'bg-black');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('py-4', 'bg-black');
+                nav.classList.add('py-6');
+            }
+        });
+    </script>
+</body>
+</html>
