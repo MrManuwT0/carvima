@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARVIMA DETAILING | Perfección Automotriz Premium</title>
     
+    <!-- Librerías Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -16,7 +18,7 @@
         
         :root {
             --gold: #D4AF37;
-            --dark: #0a0a0a;
+            --dark: #050505;
         }
 
         body {
@@ -28,7 +30,7 @@
 
         .font-display { font-family: 'Lexend', sans-serif; }
 
-        /* Estilo Custom para el Slider Antes/Después */
+        /* Slider Antes/Después */
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -57,28 +59,22 @@
             pointer-events: none;
         }
 
-        /* Glassmorphism */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Animación de Cursor Premium */
         #custom-cursor {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background: var(--gold);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
             mix-blend-mode: difference;
-            transition: transform 0.1s ease;
-        }
-
-        .gold-glow:hover {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transition: transform 0.15s ease;
         }
 
         input[type="range"]::-webkit-slider-thumb {
@@ -89,141 +85,196 @@
             cursor: pointer;
             border-radius: 50%;
         }
+
+        .nav-scrolled {
+            background: rgba(5, 5, 5, 0.9);
+            padding: 1rem 2.5rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #D4AF37, #F1D27B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body>
 
     <div id="custom-cursor" class="hidden md:block"></div>
 
-    <nav class="fixed w-full z-50 transition-all duration-500 py-6 px-10 glass" id="navbar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-6 px-10 flex justify-center" id="navbar">
+        <div class="max-w-7xl w-full flex justify-between items-center">
             <div class="text-2xl font-display font-extrabold tracking-tighter">
                 CARVIMA <span class="text-[#D4AF37]">DETAILING</span>
             </div>
-            <div class="hidden md:flex space-x-10 text-[11px] uppercase tracking-[0.25em] font-bold">
+            <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.3em] font-bold">
                 <a href="#inicio" class="hover:text-[#D4AF37] transition-colors">Inicio</a>
                 <a href="#servicios" class="hover:text-[#D4AF37] transition-colors">Servicios</a>
-                <a href="#proceso" class="hover:text-[#D4AF37] transition-colors">Proceso</a>
+                <a href="#galeria" class="hover:text-[#D4AF37] transition-colors">Resultados</a>
                 <a href="#contacto" class="hover:text-[#D4AF37] transition-colors">Contacto</a>
             </div>
-            <a href="https://wa.me/tu_numero" class="bg-[#D4AF37] text-black px-6 py-2 font-bold text-[10px] uppercase tracking-widest hover:bg-white transition-all">
-                WhatsApp Directo
+            <a href="https://wa.me/tu_numero" class="bg-[#D4AF37] text-black px-6 py-2 font-bold text-[9px] uppercase tracking-widest hover:bg-white transition-all">
+                Reserva Online
             </a>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070" class="w-full h-full object-cover opacity-40 scale-105" id="hero-img">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070" class="w-full h-full object-cover opacity-50 scale-110" id="hero-img">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]"></div>
         </div>
 
         <div class="relative z-20 text-center px-6">
-            <h1 class="text-6xl md:text-[120px] font-display font-extrabold leading-none tracking-tighter mb-4 opacity-0" id="hero-title">
-                PURE <span class="text-[#D4AF37]">LUXURY</span>
+            <h1 class="text-6xl md:text-[110px] font-display font-extrabold leading-none tracking-tighter mb-4 opacity-0" id="hero-title">
+                EXCELENCIA <br><span class="gold-gradient-text">AUTOMOTRIZ</span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-2xl font-light tracking-[0.2em] uppercase mb-10 opacity-0" id="hero-subtitle">
-                Detailing de alta gama para coleccionistas
+            <p class="text-gray-400 text-sm md:text-xl font-light tracking-[0.3em] uppercase mb-10 opacity-0" id="hero-subtitle">
+                Detailing de alta gama & protección cerámica
             </p>
             <div class="flex flex-col md:flex-row gap-6 justify-center opacity-0" id="hero-btns">
-                <a href="#contacto" class="px-12 py-5 bg-[#D4AF37] text-black font-bold uppercase tracking-widest hover:scale-105 transition-transform">Agendar Inspección</a>
-                <a href="#servicios" class="px-12 py-5 border border-white/20 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all">Nuestros Servicios</a>
+                <a href="#contacto" class="px-12 py-5 bg-[#D4AF37] text-black font-bold uppercase tracking-widest hover:bg-white transition-all duration-300 transform hover:scale-105">Agendar Inspección</a>
+                <a href="#servicios" class="px-12 py-5 border border-white/20 backdrop-blur-sm text-white font-bold uppercase tracking-widest hover:bg-white/10 transition-all">Nuestra Carta</a>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-black">
-        <div class="max-w-5xl mx-auto text-center mb-16">
-            <h2 class="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">Visualiza el cambio</h2>
-            <h3 class="text-4xl font-display font-bold italic underline decoration-[#D4AF37]">PERFECCIÓN SIN LÍMITES</h3>
+    <!-- COMPARISON SLIDER (Impacto Visual) -->
+    <section id="galeria" class="py-32 bg-black px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+            <h2 class="text-[#D4AF37] uppercase tracking-[0.5em] text-[10px] mb-4 font-bold">El Estándar de Perfección</h2>
+            <h3 class="text-4xl md:text-6xl font-display font-bold italic underline decoration-[#D4AF37] underline-offset-8">RESULTADOS REALES</h3>
         </div>
         
-        <div class="max-w-6xl mx-auto comparison-slider rounded-2xl shadow-2xl group border border-white/10">
+        <div class="max-w-5xl mx-auto comparison-slider rounded-2xl shadow-2xl border border-white/10 group overflow-hidden" data-aos="zoom-in">
+            <!-- Imagen Después -->
             <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
+            <!-- Imagen Antes -->
             <div id="before-box" class="before-image">
-                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-[1152px] h-[500px] object-cover grayscale brightness-50">
-                <span class="absolute top-1/2 left-10 text-white font-bold tracking-widest uppercase bg-black/50 px-4 py-2">Antes</span>
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-[1024px] h-[500px] object-cover grayscale brightness-50 contrast-125">
+                <span class="absolute top-1/2 left-10 text-white font-bold tracking-[0.3em] uppercase bg-black/80 px-4 py-2 text-[10px]">Antes</span>
             </div>
-            <div id="handle" class="slider-handle"></div>
-            <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 z-30 cursor-col-resize" oninput="moveSlider(this.value)">
-            <span class="absolute top-1/2 right-10 text-white font-bold tracking-widest uppercase bg-black/50 px-4 py-2">Después</span>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-1">
-            <div class="glass p-12 hover:bg-[#D4AF37] hover:text-black transition-all duration-700 group" data-aos="fade-up">
-                <span class="text-4xl mb-8 block">01</span>
-                <h4 class="text-3xl font-display font-bold mb-4 uppercase">Ceramic Coating</h4>
-                <p class="opacity-70 group-hover:opacity-100 mb-8">Blindaje nanotecnológico con brillo extremo y repelencia total al agua.</p>
-                <ul class="text-xs space-y-2 opacity-50 group-hover:opacity-100">
-                    <li>Dureza 9H Certificada</li>
-                    <li>Garantía de 5 años</li>
-                </ul>
-            </div>
-            <div class="glass p-12 hover:bg-[#D4AF37] hover:text-black transition-all duration-700 group" data-aos="fade-up" data-aos-delay="200">
-                <span class="text-4xl mb-8 block">02</span>
-                <h4 class="text-3xl font-display font-bold mb-4 uppercase">Paint Correction</h4>
-                <p class="opacity-70 group-hover:opacity-100 mb-8">Eliminación de defectos de pintura mediante pulido técnico multietapa.</p>
-                <ul class="text-xs space-y-2 opacity-50 group-hover:opacity-100">
-                    <li>Eliminación de Swirls</li>
-                    <li>Acabado Showroom</li>
-                </ul>
-            </div>
-            <div class="glass p-12 hover:bg-[#D4AF37] hover:text-black transition-all duration-700 group" data-aos="fade-up" data-aos-delay="400">
-                <span class="text-4xl mb-8 block">03</span>
-                <h4 class="text-3xl font-display font-bold mb-4 uppercase">Interior Spa</h4>
-                <p class="opacity-70 group-hover:opacity-100 mb-8">Restauración profunda de cueros, alcántara y desinfección total.</p>
-                <ul class="text-xs space-y-2 opacity-50 group-hover:opacity-100">
-                    <li>Hidratación de Cuero</li>
-                    <li>Limpieza de Vapor</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="py-32 px-6 bg-[#050505]">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-5xl md:text-7xl font-display font-bold mb-12">¿LISTO PARA EL <br> <span class="text-[#D4AF37]">SIGUIENTE NIVEL?</span></h2>
-            
-            <form class="text-left space-y-8 glass p-10 rounded-3xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <input type="text" placeholder="NOMBRE COMPLETO" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-[#D4AF37] transition-all w-full tracking-widest text-xs">
-                    <input type="text" placeholder="MODELO DEL VEHÍCULO" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-[#D4AF37] transition-all w-full tracking-widest text-xs">
+            <div id="handle" class="slider-handle">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-black">
+                    <i class="fas fa-arrows-alt-h"></i>
                 </div>
-                <input type="email" placeholder="EMAIL DE CONTACTO" class="bg-transparent border-b border-white/20 py-4 focus:outline-none focus:border-[#D4AF37] transition-all w-full tracking-widest text-xs">
-                <button class="w-full py-6 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-[#D4AF37] transition-all duration-500">
-                    Enviar Solicitud Exclusiva
-                </button>
-            </form>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 z-30 cursor-col-resize" oninput="moveSlider(this.value)">
+            <span class="absolute top-1/2 right-10 text-white font-bold tracking-[0.3em] uppercase bg-black/80 px-4 py-2 text-[10px]">Después</span>
+        </div>
+        <p class="text-center mt-8 text-gray-500 tracking-widest text-[10px] uppercase">Desliza para ver la corrección de pintura</p>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-display font-bold mb-16 border-l-4 border-[#D4AF37] pl-6 tracking-tighter">SERVICIOS DE ÉLITE</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                <div class="glass p-12 group hover:bg-[#D4AF37] transition-all duration-700" data-aos="fade-up">
+                    <div class="text-[#D4AF37] group-hover:text-black transition-colors mb-8 text-4xl"><i class="fas fa-gem"></i></div>
+                    <h4 class="text-2xl font-display font-bold mb-4 uppercase group-hover:text-black">Ceramic Coating</h4>
+                    <p class="text-gray-400 group-hover:text-black/80 mb-8 text-sm leading-relaxed">Blindaje nanotecnológico 9H. Brillo extremo y protección permanente contra químicos y rayos UV.</p>
+                    <span class="text-xs tracking-widest font-bold group-hover:text-black">DESDE 450€</span>
+                </div>
+                <div class="glass p-12 group hover:bg-[#D4AF37] transition-all duration-700" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-[#D4AF37] group-hover:text-black transition-colors mb-8 text-4xl"><i class="fas fa-magic"></i></div>
+                    <h4 class="text-2xl font-display font-bold mb-4 uppercase group-hover:text-black">Paint Correction</h4>
+                    <p class="text-gray-400 group-hover:text-black/80 mb-8 text-sm leading-relaxed">Eliminación de micro-arañazos y marcas de lavado. Recuperamos el color original de fábrica.</p>
+                    <span class="text-xs tracking-widest font-bold group-hover:text-black">DESDE 290€</span>
+                </div>
+                <div class="glass p-12 group hover:bg-[#D4AF37] transition-all duration-700" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-[#D4AF37] group-hover:text-black transition-colors mb-8 text-4xl"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="text-2xl font-display font-bold mb-4 uppercase group-hover:text-black">Protección PPF</h4>
+                    <p class="text-gray-400 group-hover:text-black/80 mb-8 text-sm leading-relaxed">Film de poliuretano auto-curativo. La defensa definitiva contra impactos de piedras y roces.</p>
+                    <span class="text-xs tracking-widest font-bold group-hover:text-black">CONSULTAR PRECIO</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="py-20 border-t border-white/10 px-10">
-        <div class="max-w-7xl mx-auto flex flex-col md:row justify-between items-center gap-10">
-            <div class="text-3xl font-display font-black tracking-tighter">CARVIMA</div>
-            <div class="flex space-x-8">
-                <a href="#" class="text-white/50 hover:text-[#D4AF37] transition-colors"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="#" class="text-white/50 hover:text-[#D4AF37] transition-colors"><i class="fab fa-facebook fa-2x"></i></a>
+    <!-- CONTACTO FUNCIONAL -->
+    <section id="contacto" class="py-32 px-6 bg-[#030303]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl md:text-7xl font-display font-bold mb-12">RESERVA TU <br> <span class="text-[#D4AF37]">INSPECCIÓN</span></h2>
+            
+            <div class="glass p-8 md:p-16 rounded-3xl relative overflow-hidden" data-aos="fade-up">
+                <form action="https://formspree.io/f/xzdoknyl" method="POST" class="text-left space-y-10">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="flex flex-col border-b border-white/10 focus-within:border-[#D4AF37] transition-all">
+                            <label class="text-[9px] text-gray-500 tracking-[0.3em] font-bold">NOMBRE COMPLETO</label>
+                            <input type="text" name="name" required class="bg-transparent py-4 focus:outline-none text-xs text-white uppercase tracking-widest" placeholder="EJ. CARLOS RODRÍGUEZ">
+                        </div>
+                        <div class="flex flex-col border-b border-white/10 focus-within:border-[#D4AF37] transition-all">
+                            <label class="text-[9px] text-gray-500 tracking-[0.3em] font-bold">VEHÍCULO (MODELO / AÑO)</label>
+                            <input type="text" name="vehicle" required class="bg-transparent py-4 focus:outline-none text-xs text-white uppercase tracking-widest" placeholder="EJ. BMW M4 G82 2023">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="flex flex-col border-b border-white/10 focus-within:border-[#D4AF37] transition-all">
+                            <label class="text-[9px] text-gray-500 tracking-[0.3em] font-bold">EMAIL DE CONTACTO</label>
+                            <input type="email" name="email" required class="bg-transparent py-4 focus:outline-none text-xs text-white tracking-widest" placeholder="TU@EMAIL.COM">
+                        </div>
+                        <div class="flex flex-col border-b border-white/10 focus-within:border-[#D4AF37] transition-all">
+                            <label class="text-[9px] text-gray-500 tracking-[0.3em] font-bold">SERVICIO REQUERIDO</label>
+                            <select name="service" required class="bg-transparent py-4 focus:outline-none text-xs text-white cursor-pointer uppercase tracking-widest">
+                                <option class="bg-[#050505]" value="coating">Coating Cerámico Premium</option>
+                                <option class="bg-[#050505]" value="correccion">Corrección de Pintura</option>
+                                <option class="bg-[#050505]" value="ppf">Protección PPF Invisible</option>
+                                <option class="bg-[#050505]" value="interior">Detailing Interior / Cuero</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col border-b border-white/10 focus-within:border-[#D4AF37] transition-all">
+                        <label class="text-[9px] text-gray-500 tracking-[0.3em] font-bold">MENSAJE (OPCIONAL)</label>
+                        <textarea name="message" rows="2" class="bg-transparent py-4 focus:outline-none text-xs text-white placeholder-white/20 tracking-widest resize-none" placeholder="CUÉNTANOS MÁS..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-6 bg-white text-black font-black uppercase tracking-[0.5em] text-[10px] hover:bg-[#D4AF37] transition-all duration-500 shadow-2xl transform active:scale-95">
+                        ENVIAR SOLICITUD DE CITA
+                    </button>
+                </form>
             </div>
-            <p class="text-[10px] text-white/30 tracking-[0.5em] uppercase text-center md:text-right">Est. 2026 &copy; Todos los derechos reservados</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 bg-black border-t border-white/5 px-10 text-center">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-2xl font-display font-black tracking-tighter mb-8">CARVIMA <span class="text-[#D4AF37]">DETAILING</span></div>
+            <div class="flex justify-center space-x-10 mb-10">
+                <a href="#" class="text-white/40 hover:text-white transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="https://wa.me/tu_numero" class="text-white/40 hover:text-white transition-colors"><i class="fab fa-whatsapp fa-lg"></i></a>
+            </div>
+            <p class="text-[9px] text-white/20 tracking-[0.6em] uppercase">Excelencia en Detailing &copy; 2026. Purveyors of automotive perfection.</p>
         </div>
     </footer>
 
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/tu_numero" class="fixed bottom-10 right-10 z-[100] bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1200, once: true });
 
-        // Animación de entrada con GSAP
+        // Animaciones GSAP de carga
         window.onload = () => {
             const tl = gsap.timeline();
-            tl.to("#hero-title", { opacity: 1, y: -20, duration: 1, delay: 0.5 })
-              .to("#hero-subtitle", { opacity: 1, y: -20, duration: 0.8 }, "-=0.5")
-              .to("#hero-btns", { opacity: 1, y: -20, duration: 0.8 }, "-=0.5")
-              .to("#hero-img", { scale: 1, duration: 3, ease: "power2.out" }, "0");
+            tl.to("#hero-title", { opacity: 1, y: -20, duration: 1.2, ease: "power4.out" }, 0.5)
+              .to("#hero-subtitle", { opacity: 1, y: -20, duration: 1, ease: "power4.out" }, "-=0.8")
+              .to("#hero-btns", { opacity: 1, y: -20, duration: 1, ease: "power4.out" }, "-=0.8")
+              .to("#hero-img", { scale: 1, duration: 4, ease: "power2.out" }, 0);
         };
 
-        // Slider Antes/Después
+        // Lógica del Slider Comparativo
         function moveSlider(value) {
             document.getElementById('before-box').style.width = value + '%';
             document.getElementById('handle').style.left = value + '%';
@@ -236,16 +287,11 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Navbar Efecto Scroll
+        // Cambio de estilo Navbar al hacer Scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if(window.scrollY > 100) {
-                nav.classList.add('py-4', 'bg-black');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('py-4', 'bg-black');
-                nav.classList.add('py-6');
-            }
+            if(window.scrollY > 100) nav.classList.add('nav-scrolled');
+            else nav.classList.remove('nav-scrolled');
         });
     </script>
 </body>
