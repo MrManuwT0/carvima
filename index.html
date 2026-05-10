@@ -26,6 +26,8 @@
             background-color: var(--dark);
             color: white;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         .font-display { font-family: 'Lexend', sans-serif; }
@@ -87,7 +89,7 @@
         }
 
         .nav-scrolled {
-            background: rgba(5, 5, 5, 0.9);
+            background: rgba(5, 5, 5, 0.95);
             padding: 1rem 2.5rem !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -96,6 +98,15 @@
             background: linear-gradient(to right, #D4AF37, #F1D27B);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -142,7 +153,7 @@
         </div>
     </section>
 
-    <!-- COMPARISON SLIDER (Impacto Visual) -->
+    <!-- COMPARISON SLIDER -->
     <section id="galeria" class="py-32 bg-black px-6">
         <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
             <h2 class="text-[#D4AF37] uppercase tracking-[0.5em] text-[10px] mb-4 font-bold">El Estándar de Perfección</h2>
@@ -150,15 +161,13 @@
         </div>
         
         <div class="max-w-5xl mx-auto comparison-slider rounded-2xl shadow-2xl border border-white/10 group overflow-hidden" data-aos="zoom-in">
-            <!-- Imagen Después -->
             <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
-            <!-- Imagen Antes -->
             <div id="before-box" class="before-image">
                 <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=2000" class="absolute inset-0 w-[1024px] h-[500px] object-cover grayscale brightness-50 contrast-125">
                 <span class="absolute top-1/2 left-10 text-white font-bold tracking-[0.3em] uppercase bg-black/80 px-4 py-2 text-[10px]">Antes</span>
             </div>
             <div id="handle" class="slider-handle">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-black">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-black shadow-lg">
                     <i class="fas fa-arrows-alt-h"></i>
                 </div>
             </div>
@@ -195,14 +204,14 @@
         </div>
     </section>
 
-    <!-- CONTACTO FUNCIONAL -->
+    <!-- CONTACTO FUNCIONAL CON AJAX -->
     <section id="contacto" class="py-32 px-6 bg-[#030303]">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-5xl md:text-7xl font-display font-bold mb-12">RESERVA TU <br> <span class="text-[#D4AF37]">INSPECCIÓN</span></h2>
             
             <div class="glass p-8 md:p-16 rounded-3xl relative overflow-hidden" data-aos="fade-up">
-                <form action="https://formspree.io/f/xzdoknyl" method="POST" class="text-left space-y-10">
-                    
+                
+                <form id="detailing-form" action="https://formspree.io/f/xzdoknyl" method="POST" class="text-left space-y-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div class="flex flex-col border-b border-white/10 focus-within:border-[#D4AF37] transition-all">
                             <label class="text-[9px] text-gray-500 tracking-[0.3em] font-bold">NOMBRE COMPLETO</label>
@@ -235,10 +244,21 @@
                         <textarea name="message" rows="2" class="bg-transparent py-4 focus:outline-none text-xs text-white placeholder-white/20 tracking-widest resize-none" placeholder="CUÉNTANOS MÁS..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-6 bg-white text-black font-black uppercase tracking-[0.5em] text-[10px] hover:bg-[#D4AF37] transition-all duration-500 shadow-2xl transform active:scale-95">
+                    <button type="submit" id="submit-btn" class="w-full py-6 bg-white text-black font-black uppercase tracking-[0.5em] text-[10px] hover:bg-[#D4AF37] transition-all duration-500 shadow-2xl transform active:scale-95">
                         ENVIAR SOLICITUD DE CITA
                     </button>
                 </form>
+
+                <!-- MENSAJE DE ÉXITO -->
+                <div id="success-message" class="hidden flex flex-col items-center justify-center py-10 animate-fade-in">
+                    <div class="w-20 h-20 bg-[#D4AF37] rounded-full flex items-center justify-center mb-6 shadow-xl">
+                        <i class="fas fa-check text-black text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-display font-bold mb-2">¡RECIBIDO!</h3>
+                    <p class="text-gray-400 tracking-widest text-xs uppercase">Nos pondremos en contacto contigo en menos de 24h.</p>
+                    <button onclick="window.location.reload()" class="mt-8 text-[9px] border-b border-[#D4AF37] text-[#D4AF37] pb-1 tracking-[0.3em] uppercase hover:text-white hover:border-white transition-all">Enviar otro mensaje</button>
+                </div>
+
             </div>
         </div>
     </section>
@@ -265,7 +285,7 @@
     <script>
         AOS.init({ duration: 1200, once: true });
 
-        // Animaciones GSAP de carga
+        // Animaciones GSAP
         window.onload = () => {
             const tl = gsap.timeline();
             tl.to("#hero-title", { opacity: 1, y: -20, duration: 1.2, ease: "power4.out" }, 0.5)
@@ -274,24 +294,60 @@
               .to("#hero-img", { scale: 1, duration: 4, ease: "power2.out" }, 0);
         };
 
-        // Lógica del Slider Comparativo
+        // Lógica Slider
         function moveSlider(value) {
             document.getElementById('before-box').style.width = value + '%';
             document.getElementById('handle').style.left = value + '%';
         }
 
-        // Cursor Personalizado
+        // Cursor
         const cursor = document.getElementById('custom-cursor');
         document.addEventListener('mousemove', e => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Cambio de estilo Navbar al hacer Scroll
+        // Navbar Scroll
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if(window.scrollY > 100) nav.classList.add('nav-scrolled');
             else nav.classList.remove('nav-scrolled');
+        });
+
+        // Envío AJAX Formspree
+        const form = document.getElementById('detailing-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.innerText = "ENVIANDO SOLICITUD...";
+            submitBtn.disabled = true;
+
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    gsap.from("#success-message", { opacity: 0, scale: 0.9, duration: 0.8, ease: "back.out(1.7)" });
+                } else {
+                    const result = await response.json();
+                    alert(result.errors ? result.errors.map(error => error.message).join(", ") : 'Hubo un error. Revisa los datos.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "ENVIAR SOLICITUD DE CITA";
+                }
+            } catch (error) {
+                alert('Error de conexión con el servidor.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = "ENVIAR SOLICITUD DE CITA";
+            }
         });
     </script>
 </body>
